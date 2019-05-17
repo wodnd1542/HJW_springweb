@@ -14,4 +14,5 @@ public interface MemberDao {
 	
 	int countAll();
 	
+	Member selectByLogin(String eamil, String password);
 }

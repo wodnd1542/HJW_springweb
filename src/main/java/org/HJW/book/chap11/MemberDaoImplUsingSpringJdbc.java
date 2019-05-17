@@ -16,6 +16,8 @@ public class MemberDaoImplUsingSpringJdbc implements MemberDao{
 	static final String SELECT_ALL = "SELECT memberId, email, name, left(cdate,19) cdate FROM member ORDER BY memberId desc LIMIT ?,?";
 
 	static final String COUNT_ALL = "SELECT count(memberId) count FROM member";
+	
+	static final String SELECT_BY_LOGIN = "SELECT memberId, email, password, name FROM member WHERE (email,password) = (?,sha2(?,256))";
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -53,6 +55,9 @@ public class MemberDaoImplUsingSpringJdbc implements MemberDao{
 		// TODO Auto-generated method stub
 		return jdbcTemplate.queryForObject(COUNT_ALL, Integer.class);
 	}
-	
+	public Member selectByLogin(String email, String password) {
+		return jdbcTemplate.queryForObject(SELECT_BY_LOGIN, memberRowMapper,
+				email, password);
+}
 	
 }
