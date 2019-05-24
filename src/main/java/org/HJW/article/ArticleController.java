@@ -3,6 +3,7 @@ package org.HJW.article;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.HJW.book.chap11.Member;
@@ -80,5 +81,18 @@ public class ArticleController {
 	/**
 	 * 글 삭제
 	 */
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public ModelAndView delete(@RequestParam int num, @RequestParam String passwd,
+			@RequestParam String pageNum, HttpServletResponse response) throws IOException{
+		
+		int check = articleService.deleteBoard(num, passwd);
+		if (check == 0) {
+			response.setContentType("text/html; charset=UTF-8);"
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('패스워드틀림');");
+			ot
+		}
 	}
+}
 
