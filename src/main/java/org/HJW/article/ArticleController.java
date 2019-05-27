@@ -91,6 +91,14 @@ public class ArticleController {
         model.addAttribute("article",article);
         return "article/update";
 }
+	@PostMapping("/article/up")
+    public String up(Article article,
+            @RequestParam("articleId") String articleId,
+            @SessionAttribute("MEMBER") Member member) {
+        article.setArticleId(articleId);
+        articleDao.updateArticle(article);
+        return "article/up";
+}
 	
 	/**
 	 * 글 삭제
