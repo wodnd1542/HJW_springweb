@@ -79,20 +79,32 @@ public class ArticleController {
 	}
 	
 	/**
+	 * 글 수정
+	 */
+	@GetMapping("/article/update")
+    public String update(
+    	 @RequestParam("articleId") String articleId,
+        @SessionAttribute("MEMBER") Member member,Model model) {
+        Article article = articleDao.getArticle(articleId);
+        if(!member.getMemberId().equals(article.getUserId()))
+            return "redirect:/app/article/view?articleId="+articleId;
+        model.addAttribute("article",article);
+        return "article/update";
+}
+	
+	/**
 	 * 글 삭제
 	 */
-	@RequestMapping(value = "delete", method = RequestMethod.POST)
-	public ModelAndView delete(@RequestParam int num, @RequestParam String passwd,
-			@RequestParam String pageNum, HttpServletResponse response) throws IOException{
-		
-		int check = articleService.deleteBoard(num, passwd);
-		if (check == 0) {
-			response.setContentType("text/html; charset=UTF-8);"
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('패스워드틀림');");
-			ot
+	@GetMapping("/article/delete")
+	public String deleteArticle(
+			@RequestParam("articleId") String articleId,
+			@SessionAttribute("MEMBER") Member member) {
+			Article article = articleDao.getArticle(articleId);
+			if(!member.getMemberId().equals(article.getUserId()))
+				return "redirect:/app/article/view?articleId="+articleId;
+			articleDao.deleteArticle(article);
+			return "redirect:/app/article/list";
 		}
-	}
+
 }
 
