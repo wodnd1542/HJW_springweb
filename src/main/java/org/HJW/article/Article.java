@@ -9,15 +9,6 @@ public class Article {
 	String name;
 	String cdate;
 	String udate;
-	String delete;
-
-	public String getDelete() {
-		return delete;
-	}
-
-	public void setDelete(String delete) {
-		this.delete = delete;
-	}
 
 	public String getArticleId() {
 		return articleId;
@@ -86,8 +77,9 @@ public class Article {
 
 	@Override
 	public String toString() {
-		return "Article [articleId=" + articleId + ", title=" + title + ", content=" + content + ", userId=" + userId
-				+ ", name=" + name + ", cdate=" + cdate + ", udate=" + udate + ", delete=" + delete + "]";
+		return "\nArticle [articleId=" + articleId + ", title=" + title
+				+ ", content=" + content + ", userId=" + userId + ", name="
+				+ name + ", cdate=" + cdate + ", udate=" + udate + "]";
 	}
 
 }

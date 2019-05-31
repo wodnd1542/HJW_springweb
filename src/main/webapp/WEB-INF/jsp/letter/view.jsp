@@ -15,9 +15,9 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/jsp/header.jsp"%>
-	<h2>글 보기</h2>
+	<h2>회원 목록</h2>
 	<p>
-		<a href="./app/article/list">글목록</a>
+		<a href="./app/article/list">목록</a>
 		<c:if test="${article.userId == sessionScope.MEMBER.memberId }">
 			<a href="./app/article/updateForm?articleId=${article.articleId }">글수정</a>
 			<a href="./app/article/delete?articleId=${article.articleId }"
