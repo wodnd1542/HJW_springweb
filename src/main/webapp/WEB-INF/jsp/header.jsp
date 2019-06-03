@@ -1,8 +1,11 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header>
 	<p>
 		<span><a href="./">홈</a></span> | <span><a href="./app/members">회원목록</a></span>
-		| <span><a href="./app/article/list">게시판</a></span> |
+		| <span><a href="./app/article/list">게시판</a></span> | <span><a
+			href="./app/letter/listReceived">받은편지함</a></span> | <span><a
+			href="./app/letter/listSent">보낸편지함</a></span> |
 		<!-- 로그인 여부에 따라 분기 -->
 		<c:choose>
 			<c:when test="${!empty sessionScope.MEMBER }">
