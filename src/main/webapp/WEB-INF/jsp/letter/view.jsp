@@ -24,13 +24,13 @@ onclick="return confirmDelete();">[글삭제]</a>
         <tr>
             <td>작성일자 : ${letter.cdate}</td>
         </tr>
-        <tr><td>보낸사람 이  름 :${letter.senderId}</td></tr>
-        <tr><td>받은사람 이  름 :${letter.receiverName}</td></tr>
+        <tr><td>보낸사람이름 :${letter.senderId}</td></tr>
+        <tr><td>받은사람이름 :${letter.receiverName}</td></tr>
         <tr>
             <td>편지제목 :${letter.title}</td>
         </tr>
         <tr>
-            <td> 편지 내 용 </td></tr>
+            <td> 편지내용 </td></tr>
             <tr>
             <td><p>${letter.content }</p></td>
         </tr>
